@@ -1,8 +1,11 @@
 {
   "name": "hutao",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Simple package manager in Node.js",
   "main": "index.js",
+  "bin": {
+    "hutao": "./index.js"
+  },
   "scripts": {
     "test": "node index.js"
   },

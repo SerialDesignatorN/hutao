@@ -26,6 +26,11 @@ yargs.command('install <packages...>', 'Install one or more packages', (yargs) =
     demandOption: false,
   });
 })
+yargs.option('debug', {
+  describe: 'Enable this flag to debug hutao',
+  type: 'boolean',
+  demandOption: false
+})
 .command('remove <packages...>', 'Remove one or more packages')
 .command('update', 'Update all installed packages')
 .command('upgrade', 'Upgrade all installed packages')
@@ -67,11 +72,14 @@ Hu Tao Package Manager v${getVersion()}
 if (argv._[0] == 'boo') {
   boo()
 }
-console.log('>>>>>> DEBUG INFO <<<<<<')
-console.log('Command:', argv._[0]);
-console.log('Subcommand:', argv._[1]);
-console.log('Packages to install:', argv.packages);
-console.log('Clone target:', argv.url?.[Object.keys(argv.url)[0]])
-console.log('Install on:', argv['install-on']);
-console.log('Silent mode:', argv.silent);
-console.log('No admin mode:', argv.noadmin);
+if (argv.debug == true) {
+  console.log('>>>>>> DEBUG INFO <<<<<<')
+  console.log('Command:', argv._[0]);
+  console.log('Subcommand:', argv._[1]);
+  console.log('Packages to install:', argv.packages);
+  console.log('Clone target:', argv.url?.[Object.keys(argv.url)[0]])
+  console.log('Install on:', argv['install-on']);
+  console.log('Silent mode:', argv.silent);
+  console.log('Debug mode:', argv.debug)
+  console.log('No admin mode:', argv.noadmin);
+}
